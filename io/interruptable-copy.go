@@ -1,7 +1,9 @@
 package io
 
-//golang标准库里的Copy，是基于dst来判断复制是否继续，InerruptableCopy可以通过context，从外部控制流复制
-
+/*
+golang标准库里的Copy，是基于dst来判断复制是否继续，InerruptableCopy可以通过context，从外部控制流复制。当调用cancelF()后，应尽快让Read返回，才能达到中断目的。
+例如对于net.Conn,使用 Conn.SetDeadline来触发read timeout。
+*/
 import (
 	"context"
 	"io"
